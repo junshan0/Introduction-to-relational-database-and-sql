@@ -1,0 +1,53 @@
+
+------------------------------------------------
+-- 7.4 WHERE Clause: IN and Subquery
+------------------------------------------------
+
+SELECT * FROM Instructor WHERE Instructor_Name IN ('Yoda', 'Obi-wan Kenobi');
+-- Each value must be separately quoted. Can not use one set of quote to enclose all.
+SELECT * FROM Instructor WHERE Instructor_Name IN ('Yoda, Obi-wan Kenobi');
+
+
+SELECT * FROM Course WHERE Instructor_Name IN (
+    SELECT Instructor_Name FROM Instructor
+    WHERE Instructor_Affiliation = 'Jedi'
+);
+
+
+SELECT * FROM Registration
+WHERE Actual_Tuition > (
+    SELECT AVG(Actual_Tuition) FROM Registration
+    WHERE Course_Name = 'Introduction to the Force'
+)
+AND Course_Name = 'Introduction to the Force';
+
+SELECT * FROM Course
+WHERE Tuition > (
+    SELECT MAX(Actual_Tuition) FROM Registration
+    WHERE Course_Name LIKE '%Force%'
+);
+
+SELECT * FROM Course
+WHERE Tuition > ALL (
+    SELECT Actual_Tuition FROM Registration
+    WHERE Actual_Tuition IS NOT NULL
+);
+
+SELECT * FROM Course
+WHERE Tuition > ANY (
+    SELECT Actual_Tuition FROM Registration
+    WHERE Actual_Tuition IS NOT NULL
+);
+
+SELECT * FROM Registration
+WHERE Actual_Tuition > (
+    SELECT MAX(Actual_Tuition) FROM Registration
+    WHERE Course_Name = 'Introduction to the Force'
+);
+
+SELECT * FROM Registration
+WHERE Actual_Tuition < (
+    SELECT MAX(Actual_Tuition) FROM Registration
+    WHERE Course_Name LIKE '%Force%'
+);
+

@@ -1,0 +1,32 @@
+---------------------------------------------------
+-- Original model's shorthand representation:
+-- Claim ( Claim Date, 
+-- 	Patient ID, Patient Name, Street Address, Address 2, City, State, ZIP Code, 
+-- 	(Provider ID, Provider Name, Association ID, Association Name, Fee Charged, Coverage, Balance)
+-- )
+---------------------------------------------------
+
+-- Questions:
+---------------------------------------------------
+-- 1	Use shorthand representation, show the normalization of the spreadsheet into 1NF, 2NF, and 3NF compliant relations step by step.	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 2	Identify entities and relationships and their primary key. Use shorthand representation to record your result.	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 3	Write SQL CREATE statements for entities and relationship	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 4	Draw ERD based on your design using crowfoot represenation.	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 5	INSERT INTO Provider table for the following row	
+-- 		Provider 1's name is Maria. Her Association on record is 101
+-- 		Provider 2's name is Rachel. Her Association on record is 102
+-- 		Provider 3's name is Bill. We don't know his Associations' name yet.
+---------------------------------------------------
+	

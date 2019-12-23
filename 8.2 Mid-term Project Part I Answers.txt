@@ -1,0 +1,93 @@
+---------------------------------------------------
+-- Original model's shorthand representation:
+-- Claim ( Claim Date, 
+-- 	Patient ID, Patient Name, Street Address, Address 2, City, State, ZIP Code, 
+-- 	(Provider ID, Provider Name, Association ID, Association Name, Fee Charged, Coverage, Balance)
+-- )
+---------------------------------------------------
+
+-- Questions:
+---------------------------------------------------
+-- 1	Use shorthand representation, show the normalization of the spreadsheet into 1NF, 2NF, and 3NF compliant relations step by step.	
+---------------------------------------------------
+
+1NF:
+Claim ( Claim Date,
+	*Patient ID*, Patient Name, Street Address, Address 2, City, State, ZIP Code,  
+	*Provider ID*, Provider Name, Association ID, Association Name, Fee Charged, Coverage, Balance
+)
+
+2NF:
+Claim ( Claim Date, *Patient ID*, *Provider ID*, Fee Charged, Coverage, Balance)
+Patient (*Patient ID*, Patient Name, Street Address, Address 2, City, State, ZIP Code)
+Provider (*Provider ID*, Provider Name, Association ID, Association Name)
+
+3NF:
+Claim ( Claim Date, *Patient ID*, *Provider ID*, Fee Charged, Coverage, Balance)
+Patient (*Patient ID*, Patient Name, Street Address, Address 2, City, State, ZIP Code)
+Provider (*Provider ID*, Provider Name, Association ID)
+Provider Association (*Association ID*, Association Name)
+
+---------------------------------------------------
+-- 2	Identify entities and relationships and their primary key. Use shorthand representation to record your result.	
+---------------------------------------------------
+
+Patient:Claim => 1:M
+Provider:Claim => 1:M
+Provider Association:Provider => 1:M
+
+---------------------------------------------------
+-- 3	Write SQL CREATE statements for entities and relationship	
+---------------------------------------------------
+
+CREATE TABLE Claim ( 
+	Claim_Date date, 
+	Patient_ID int, 
+	Provider_ID int, 
+	Fee_Charged decimal(8, 2), 
+	Coverage decimal(8, 2), 
+	Balance decimal(8, 2),
+	PRIMARY KEY (Patient_ID, Provider_ID)
+);
+
+CREATE TABLE Patient (
+	Patient_ID int PRIMARY KEY, 
+	Patient_Name varchar(100), 
+	Street_Address varchar(100), 
+	Address_2 varchar(100), 
+	City varchar(100), 
+	State char(2), 
+	ZIP_Code char(5)
+);
+
+CREATE TABLE Provider (
+	Provider_ID int PRIMARY KEY, 
+	Provider_Name varchar(100), 
+	Association_ID int
+);
+
+CREATE TABLE Provider_Association (
+	Association_ID int PRIMARY KEY, 
+	Association_Name varchar(100)
+);
+
+---------------------------------------------------
+-- 4	Draw ERD based on your design using crowfoot represenation.	
+---------------------------------------------------
+
+In separate file.
+
+---------------------------------------------------
+-- 5	INSERT INTO Provider table for the following row	
+-- 		Provider 1's name is Maria. Her Association on record is 101
+-- 		Provider 2's name is Rachel. Her Association on record is 102
+-- 		Provider 3's name is Bill. We don't know his Associations' ID yet.
+---------------------------------------------------
+
+INSERT INTO Provider VALUES (1, 'Maria', 101);
+INSERT INTO Provider (Provider_ID, Provider_Name, Association_ID) VALUES (2, 'Rachel', 102);
+INSERT INTO Provider VALUES (3, 'Bill', NULL);
+
+-- INSERT INTO Provider (Provider_ID, Provider_Name) VALUES (3, 'Bill');
+
+		

@@ -1,0 +1,22 @@
+
+------------------------------------------------
+-- 11.8 Filtering from Another Table
+------------------------------------------------
+
+SELECT * FROM Course
+WHERE Instructor_Name IN (
+SELECT Instructor_Name FROM Instructor
+WHERE Instructor_Affiliation = 'Jedi');
+
+SELECT Course.* 
+FROM Course JOIN Instructor
+on Course.Instructor_Name = Instructor.Instructor_Name 
+WHERE Instructor_Affiliation = 'Jedi';
+
+SELECT * FROM Course 
+WHERE EXISTS (
+	SELECT * FROM Instructor
+	WHERE Instructor_Affiliation = 'Jedi'
+	AND Course.Instructor_Name = Instructor.Instructor_Name
+);
+

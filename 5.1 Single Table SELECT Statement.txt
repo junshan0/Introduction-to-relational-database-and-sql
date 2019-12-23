@@ -1,0 +1,32 @@
+
+------------------------------------------------
+-- 5.1 Single Table SELECT Statement
+------------------------------------------------
+
+SELECT 
+    Course_Name, 
+    Tuition * 1.1
+FROM Course;
+
+SELECT 
+    Course_Name, 
+    Tuition AS Current_Tuition,
+    Tuition * 1.1 AS Proposed_New_Tuition
+FROM Course;
+
+SELECT * FROM Instructor WHERE Instructor_Affiliation = 'Jedi';
+
+SELECT 'This is a test' FROM Instructor;
+SELECT Instructor_Affiliation FROM Instructor;
+SELECT DISTINCT Instructor_Affiliation FROM Instructor;
+SELECT DISTINCT Instructor_Name, Instructor_Affiliation FROM Instructor;
+
+SELECT Instructor_Name, Course_Name FROM Course ORDER BY Instructor_Name;
+SELECT Instructor_Name, Course_Name FROM Course ORDER BY Instructor_Name DESC;
+SELECT Instructor_Name, Course_Name FROM Course ORDER BY Instructor_Name DESC, Course_Name ASC;
+SELECT Course_Name FROM Course ORDER BY Instructor_Name DESC, Course_Name ASC;
+
+-- ORDER BY can based on calculation
+SELECT * FROM Course
+ORDER BY Tuition * 1.1;
+

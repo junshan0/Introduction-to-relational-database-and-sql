@@ -1,0 +1,44 @@
+
+------------------------------------------------
+-- 13.1 Stored Procedure
+------------------------------------------------
+
+
+-- Stored procedure
+CREATE PROCEDURE GET_Course (
+    V_Course_ID IN CHAR, V_Course_NAME OUT VARCHAR
+)
+AS
+BEGIN
+    SELECT Course_NAME 
+    INTO V_Course_NAME 
+    FROM Course
+    WHERE Course_ID = V_Course_ID;
+    dbms_output.put_line(V_Course_NAME);
+END;
+
+declare
+    R varchar(100);
+begin
+    GET_Course(1, R);
+end;
+
+-- Update stored procedure
+CREATE PROCEDURE Update_Course (
+    V_Course_ID IN CHAR, V_Course_NAME IN VARCHAR
+)
+AS
+BEGIN
+    UPDATE Course 
+    SET Course_NAME = V_Course_NAME
+    WHERE V_Course_ID = Course_ID;
+END;
+
+begin
+    Update_Course(1, 'My New Course');
+end;
+
+SELECT * FROM Course;
+
+
+  

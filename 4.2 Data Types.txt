@@ -1,0 +1,40 @@
+
+
+------------------------------------------------
+-- 4.2 Data Types
+------------------------------------------------
+
+-- DECIMAL -> INT
+-- Check what Course_ID and Tuition are for this record
+INSERT INTO Course VALUES (12.34, 'Experiencing the Darkside', 'General LeParmentier', 50);
+SELECT * from Course;
+
+-- DECIMAL Precision
+-- It will fail because Tuition value is beyond the defined precision 
+INSERT INTO Course VALUES (101, 'How to blow death star into pieces', 'Luke Skywalker', 123456.78);
+
+-- DECIMAL Scale
+-- Accuracy loss because decimal digits are more than scale
+INSERT INTO Course VALUES (101, 'How to blow death star into pieces', 'Luke Skywalker', 12345.678);
+SELECT * from Course;
+
+-- No comma for DECIMAL
+INSERT INTO Course VALUES (999, 'Introduction to the Force', 'Obi-wan Kenobi', 50,000);
+-- Oracle can try its best to intepret '500' as a DECIMAL but you should not
+INSERT INTO Course VALUES (999, 'Introduction to the Force', 'Obi-wan Kenobi', '500');
+-- Oracle can't figure out how to convert 'R2D2' into DECIMAL
+INSERT INTO Course VALUES (999, 'Introduction to the Force', 'Obi-wan Kenobi', 'R2D2');
+
+-- No double quote for CHAR/VARCHAR
+INSERT INTO Course VALUES (1, "Introduction to the Force", 'Obi-wan Kenobi', 100);
+
+-- Length of VARCHAR
+INSERT INTO Instructor VALUES ('A Jedi with a really long name', 'Jedi');
+-- Length of CHAR
+INSERT INTO Instructor VALUES ('Anakin Skywalker', 'I don''t care which side I am in');
+
+-- Difference between CHAR and VARCHAR
+SELECT '#' || Instructor_NAME || '#', '#' || Instructor_Affiliation || '#'
+FROM Instructor;
+
+

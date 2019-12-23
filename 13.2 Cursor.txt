@@ -1,0 +1,14 @@
+
+------------------------------------------------
+-- 13.2 Cursor
+------------------------------------------------
+
+DECLARE CURSOR C_Course IS
+    SELECT * FROM Course
+    ORDER BY Course_ID;
+BEGIN
+    FOR A_Course IN C_Course LOOP
+        dbms_output.put_line(A_Course.Course_Name);
+    END LOOP;
+END;
+

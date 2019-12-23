@@ -1,0 +1,137 @@
+---------------------------------------------------
+-- SQL CREATE statements used to create the required tables
+---------------------------------------------------
+CREATE TABLE Claim ( 
+	Claim_Date date, 
+	Patient_ID int, 
+	Provider_ID int, 
+	Fee_Charged decimal(8, 2), 
+	Coverage decimal(8, 2), 
+	Balance decimal(8, 2),
+	PRIMARY KEY (Patient_ID, Provider_ID)
+);
+
+CREATE TABLE Patient (
+	Patient_ID int PRIMARY KEY, 
+	Patient_Name varchar(100), 
+	Street_Address varchar(100), 
+	Address_2 varchar(100), 
+	City varchar(100), 
+	State char(2), 
+	ZIP_Code varchar(5)
+);
+
+CREATE TABLE Provider (
+	Provider_ID int PRIMARY KEY, 
+	Provider_Name varchar(100), 
+	Association_ID int
+);
+
+CREATE TABLE Provider_Association (
+	Association_ID int PRIMARY KEY, 
+	Association_Name varchar(100)
+);
+
+---------------------------------------------------
+-- SQL INSERT statements used to populate the required tables
+---------------------------------------------------
+DELETE FROM Provider_Association;
+INSERT INTO Provider_Association VALUES (101, 'Central City Dentistry');
+INSERT INTO Provider_Association (Association_ID, Association_Name) VALUES (102, 'Good Smile Dental Office');
+
+DELETE FROM Provider;
+INSERT INTO Provider VALUES (1, 'Maria', 101);
+INSERT INTO Provider (Provider_ID, Provider_Name, Association_ID) VALUES (2, 'Rachel', 102);
+INSERT INTO Provider VALUES (3, 'Bill', NULL);
+
+INSERT INTO Claim VALUES ('01-OCT-2019', 99001, 1, 120, 119,   1);
+INSERT INTO Claim VALUES ('01-OCT-2019', 99001, 2,  20,  11,   9);
+INSERT INTO Claim VALUES ('01-OCT-2019', 99001, 3, 620, 519, 101);
+INSERT INTO Claim VALUES ('01-OCT-2019', 99002, 1, 150, 120,  30);
+
+INSERT INTO Patient VALUES (99001, 'Jimmy', '123 Main St', '', 'New York', 'NY', 10001);
+INSERT INTO Patient VALUES (99002, 'Jose', '8888 Broadway', '', 'New York', 'NY', 10032);
+
+---------------------------------------------------
+-- Questions:
+---------------------------------------------------
+---------------------------------------------------
+--  1. Get a list of all providers (ID only) in Claim table. Each date only showing once.
+---------------------------------------------------
+
+---------------------------------------------------
+--  2. Check how many claims the Claim table contains.
+---------------------------------------------------
+
+---------------------------------------------------
+--  3. Find out the highest coverage of patients for each provider
+---------------------------------------------------
+
+---------------------------------------------------
+--  4. For each provider, find out the unique patient count (a patient may have multiple claims with the same provider in different dates). The result column should be called 'Unique_Count'.
+---------------------------------------------------
+
+---------------------------------------------------
+--  5. For each provider, find out the patient count in history. The result column should be called 'Historical_Count'.
+---------------------------------------------------
+
+---------------------------------------------------
+--  6. For each patient with total Fee Charged < 200, find the total balance in history.
+---------------------------------------------------
+
+---------------------------------------------------
+--  7. List all provider association names with a count of their provider.
+---------------------------------------------------
+
+---------------------------------------------------
+--  8. Find out the provider associations in which claim count is more than 1, sorted by claim count, highest first.
+---------------------------------------------------
+
+---------------------------------------------------
+--  9. List all patient names and each patient's total balance, for provider associations' names starting with 'C'
+---------------------------------------------------
+
+---------------------------------------------------
+-- 10. List all patient names and each patient's total balance for patients with balance more than $10
+---------------------------------------------------
+
+---------------------------------------------------
+-- 11. List all providers' names with their provider association names. If the provider association's name does not exist in provider association table, show NULL for the name.
+---------------------------------------------------
+
+---------------------------------------------------
+-- 12. Redo Question #11 using a different approach.
+---------------------------------------------------
+
+---------------------------------------------------
+-- 13. List all provider names, if the provider association's name starts with 'C'.
+---------------------------------------------------
+
+---------------------------------------------------
+-- 14. Redo Question #13 using a different approach.
+---------------------------------------------------
+
+---------------------------------------------------
+-- 15. Redo Question #14 using a different approach.
+---------------------------------------------------
+
+---------------------------------------------------
+-- 16. Create a view High_Balance_Patients based on the result of Question #10
+---------------------------------------------------
+
+---------------------------------------------------
+-- 17. Find patients with a claim from Provider 1, but no claims with Provider 2 
+---------------------------------------------------
+
+---------------------------------------------------
+-- 18. Redo Question #17 using a different approach 
+---------------------------------------------------
+
+---------------------------------------------------
+-- 19. Rank provider for each patient based on their balance, highest first
+---------------------------------------------------
+
+---------------------------------------------------
+-- 20. Use a stored procedure to provide an 10% decrease to all the balances
+---------------------------------------------------
+

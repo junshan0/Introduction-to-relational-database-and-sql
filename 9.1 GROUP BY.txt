@@ -1,0 +1,22 @@
+
+------------------------------------------------
+-- 9.1 GROUP BY
+------------------------------------------------
+
+SELECT Student_Name, SUM(Actual_Tuition)
+FROM Registration
+GROUP BY Student_Name;
+
+SELECT Student_Name, Course_Name, AVG(Actual_Tuition)
+FROM Registration
+GROUP BY Student_Name, Course_Name;
+
+-- SELECT column not in GROUP BY will cause an error
+SELECT Student_Name, Course_Name, AVG(Actual_Tuition)
+FROM Registration
+GROUP BY Student_Name;
+
+SELECT Student_Name, Course_Name, AVG(Actual_Tuition)
+FROM Registration
+GROUP BY Student_Name, Course_Name
+ORDER BY Course_Name;

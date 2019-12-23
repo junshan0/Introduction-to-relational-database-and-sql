@@ -1,0 +1,18 @@
+
+
+------------------------------------------------
+-- 4.3 NULL
+------------------------------------------------
+
+-- Inserting NULL
+INSERT INTO Instructor VALUES ('Owen Lars', NULL);
+INSERT INTO Instructor (Instructor_Name) VALUES ('Owen Lars');
+
+-- Inserting NULL into PRIMARY KEY (or any NOT NULL field) --- Will fail
+INSERT INTO Instructor VALUES (NULL, 'Jedi');
+
+-- Inserting without PRIMARY KEY or any NOT NULL field 
+-- Equivalent as inserting NULLs into these fields. Will fail
+INSERT INTO Instructor (Instructor_Affiliation) VALUES ('Jedi');
+
+

@@ -1,0 +1,14 @@
+
+------------------------------------------------
+-- 13.3 Window Functions
+------------------------------------------------
+SELECT 
+	Student_Name,
+	Course_Name, 
+	RANK() OVER (
+		PARTITION BY Student_Name
+		ORDER BY Actual_Tuition DESC
+	) AS Tuition_Rank 
+FROM Registration;
+
+  

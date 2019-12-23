@@ -1,0 +1,15 @@
+
+------------------------------------------------
+-- 9.2 WHERE and HAVING in GROUP BY
+------------------------------------------------
+SELECT Student_Name, SUM(ACTUAL_Tuition)
+FROM Registration
+GROUP BY Student_Name
+HAVING SUM(ACTUAL_Tuition) > 600
+
+SELECT Student_Name, SUM(ACTUAL_Tuition)
+FROM Registration
+WHERE Course_Name = 'Introduction to the Force'
+GROUP BY Student_Name
+HAVING SUM(ACTUAL_Tuition) > 600
+

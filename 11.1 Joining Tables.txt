@@ -1,0 +1,19 @@
+
+------------------------------------------------
+-- 11.1 Joining Tables
+------------------------------------------------
+
+-- Note the comma!!!
+SELECT Instructor_Affiliation
+FROM Instructor, Course   
+WHERE Instructor.Instructor_Name = Course.Instructor_Name;
+
+-- Will fail because Instructor_Name exists in both tables
+SELECT Course_Name, Instructor_Name
+FROM Instructor i, Course c
+WHERE Instructor.Instructor_Name = Course.Instructor_Name;
+
+SELECT c.Course_Name, i.Instructor_Name
+FROM Instructor i, Course c
+WHERE i.Instructor_Name = c.Instructor_Name;
+

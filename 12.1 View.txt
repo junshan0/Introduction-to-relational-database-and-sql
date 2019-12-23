@@ -1,0 +1,11 @@
+
+
+------------------------------------------------
+-- 12.1 View
+------------------------------------------------
+
+CREATE VIEW Jedi_Instructor AS
+SELECT * FROM Instructor
+WHERE Instructor_Affiliation = 'Jedi';
+
+  

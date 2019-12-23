@@ -1,0 +1,23 @@
+
+------------------------------------------------
+-- 11.7 Outer Join
+------------------------------------------------
+
+-- Compare the result of following two Outer Joins
+--     with table order switched
+SELECT c.Course_Name, i.Instructor_Name
+FROM Instructor i
+LEFT OUTER JOIN Course c
+  on c.Instructor_Name = i.Instructor_Name;
+
+SELECT c.Course_Name, i.Instructor_Name
+FROM Course c
+LEFT OUTER JOIN Instructor i
+  on c.Instructor_Name = i.Instructor_Name;
+
+-- Left Outer Join vs Right Outer Join
+SELECT c.Course_Name, i.Instructor_Name
+FROM Course c
+RIGHT OUTER JOIN Instructor i
+  on c.Instructor_Name = i.Instructor_Name;
+

@@ -1,0 +1,27 @@
+
+
+------------------------------------------------
+-- 6.2 Changing Table Structure
+------------------------------------------------
+
+-- ALTER TABLE
+ALTER TABLE Registration MODIFY Actual_Tuition DECIMAL(8,2);
+-- Was DECIMAL(7,2)
+
+ALTER TABLE Instructor ADD Instructor_TYPE CHAR(1);
+
+SELECT * FROM Instructor;
+
+ALTER TABLE Instructor MODIFY Instructor_TYPE CHAR(10);
+
+SELECT * FROM Instructor;
+
+-- What will happen?
+ALTER TABLE Instructor MODIFY Instructor_TYPE CHAR(10) NOT NULL;
+
+UPDATE Instructor SET Instructor_TYPE = 'T';
+
+ALTER TABLE Instructor MODIFY Instructor_TYPE CHAR(10) NOT NULL;
+
+SELECT * FROM Instructor;
+

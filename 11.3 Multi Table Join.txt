@@ -1,0 +1,28 @@
+
+------------------------------------------------
+-- 11.3 Multi Table Join
+------------------------------------------------
+
+SELECT c.Course_Name, s.Student_Name
+FROM Registration r
+JOIN Student s
+  ON r.Student_ID = s.Student_ID
+JOIN Course c
+  ON r.Course_ID = c.Course_ID;
+
+SELECT c.Course_Name, i.Instructor_Affiliation
+FROM Registration r
+JOIN Course c
+  ON r.Course_ID = c.Course_ID
+JOIN Instructor i
+  on c.Instructor_Name = i.Instructor_Name;
+
+SELECT c.Course_Name, i.Instructor_Affiliation, s.Student_Name
+FROM Registration r
+JOIN Student s
+  ON r.Student_ID = s.Student_ID
+JOIN Course c
+  ON r.Course_ID = c.Course_ID
+JOIN Instructor i
+  on c.Instructor_Name = i.Instructor_Name;
+

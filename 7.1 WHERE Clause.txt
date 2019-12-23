@@ -1,0 +1,21 @@
+
+
+------------------------------------------------
+-- 7.1 WHERE Clause
+------------------------------------------------
+
+SELECT * FROM Registration
+WHERE Actual_Tuition * 1.1 > 150;
+
+SELECT * FROM Registration
+WHERE Actual_Tuition * 1.1 > 150 AND Student_Name = 'Luke Skywalker';
+
+SELECT * FROM Registration
+WHERE Actual_Tuition * 1.1 > 150 OR Student_Name = 'Luke Skywalker';
+
+SELECT * FROM Registration
+WHERE NOT (Actual_Tuition * 1.1 > 150);
+
+SELECT * FROM Registration
+WHERE Actual_Tuition BETWEEN 100 AND 200;
+

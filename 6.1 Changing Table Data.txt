@@ -1,0 +1,45 @@
+
+------------------------------------------------
+-- 6.1 Changing Table Data
+------------------------------------------------
+
+
+CREATE TABLE Instructor_New_Era (
+    Instructor_Name varchar(20) PRIMARY KEY,
+    Instructor_Affiliation char(10)
+);
+
+INSERT INTO Instructor_New_Era
+SELECT * FROM Instructor;
+
+SELECT * FROM Instructor_New_Era;
+
+DELETE FROM Instructor_New_Era;
+
+INSERT INTO Instructor_New_Era (Instructor_Affiliation, Instructor_NAME) 
+SELECT Instructor_Affiliation, Instructor_NAME FROM Instructor;
+
+SELECT * FROM Instructor_New_Era;
+
+INSERT INTO Instructor_New_Era (Instructor_NAME) 
+SELECT * FROM Instructor;
+
+DROP TABLE Instructor_New_Era;
+
+DELETE FROM Instructor;
+DELETE FROM Instructor WHERE Instructor_Affiliation = 'Jedi';
+
+UPDATE Instructor SET
+    Instructor_Name = 'Darth Vader',
+    Instructor_Affiliation = 'Sith'
+WHERE Instructor_Name = 'Anakin Skywalker';
+
+UPDATE Registration SET
+    Actual_Tuition = Actual_Tuition * 1.1 -- 10% increase
+WHERE Course_Name = 'Throat Checking 101';
+
+UPDATE Course SET
+    Course_Name = NULL
+WHERE Instructor_Name = 'Anakin Skywalker';
+
+

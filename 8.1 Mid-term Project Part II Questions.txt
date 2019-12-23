@@ -1,0 +1,133 @@
+---------------------------------------------------
+-- SQL CREATE statements used to create the required tables
+---------------------------------------------------
+CREATE TABLE Claim ( 
+	Claim_Date date, 
+	Patient_ID int, 
+	Provider_ID int, 
+	Fee_Charged decimal(8, 2), 
+	Coverage decimal(8, 2), 
+	Balance decimal(8, 2),
+	PRIMARY KEY (Patient_ID, Provider_ID)
+);
+
+CREATE TABLE Patient (
+	Patient_ID int PRIMARY KEY, 
+	Patient_Name varchar(100), 
+	Street_Address varchar(100), 
+	Address_2 varchar(100), 
+	City varchar(100), 
+	State char(2), 
+	ZIP_Code varchar(5)
+);
+
+CREATE TABLE Provider (
+	Provider_ID int PRIMARY KEY, 
+	Provider_Name varchar(100), 
+	Association_ID int
+);
+
+CREATE TABLE Provider_Association (
+	Association_ID int PRIMARY KEY, 
+	Association_Name varchar(100)
+);
+
+---------------------------------------------------
+-- SQL INSERT statements used to populate the required tables
+---------------------------------------------------
+DELETE FROM Provider_Association;
+INSERT INTO Provider_Association VALUES (101, 'Central City Dentistry');
+INSERT INTO Provider_Association (Association_ID, Association_Name) VALUES (102, 'Good Smile Dental Office');
+
+DELETE FROM Provider;
+INSERT INTO Provider VALUES (1, 'Maria', 101);
+INSERT INTO Provider (Provider_ID, Provider_Name, Association_ID) VALUES (2, 'Rachel', 102);
+INSERT INTO Provider VALUES (3, 'Bill', NULL);
+
+INSERT INTO Claim VALUES ('01-OCT-2019', 99001, 1, 120, 119,   1);
+INSERT INTO Claim VALUES ('01-OCT-2019', 99001, 2,  20,  11,   9);
+INSERT INTO Claim VALUES ('01-OCT-2019', 99001, 3, 620, 519, 101);
+INSERT INTO Claim VALUES ('01-OCT-2019', 99002, 1, 150, 120,  30);
+
+---------------------------------------------------
+-- Questions:
+---------------------------------------------------
+-- 1	Find out which Association's name is Central City Dentistry.	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 2	Find out whose Association's ID is missing.	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 3	Update the Association's ID to 101 for the missing Association.	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 4	Change the State column of Patient table to not allowing NULL	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 5	Add a column called Patient_Deductible to Claim table. It must have 6 digits in which 2 are decimal points	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 6	There is an old table Patient_2018 which has the same structure as Patient. Copy all its data into the Patient table.	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 7	Remove all data from Patient_2018 but the table should still be there for future use.	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 8	Delete from Claim table where Fee Charged is greater than $500.	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 9	Find from Claim table which record has a Fee Charged of 200 and Provider number is 1.	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 10	Find from Claim table which records have Fee Charged less than or equals to 200 but greater than or equals to 100.	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 11	Find from Provider table of all records belonging to Provider Maria and Bill.	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 12	Find out what Fee Charged will be after a 20% increase. The new value should be call "NEW_Fee_Charged".	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 13	Find out all Providers whose names start with 'B', sorted by Association ID descending.	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 14	Find out all Providers whose names contains 'e', sorted by Provider name.	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 15	Find out all Provider numbers in the Claim table, each showing only once.	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 16	Find out all associations whose association names contain 'Dent', regardless of case. 	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 17	Find out all claims whose Fee Charged is lower than the average Fee Charged	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 18	Use a different approach for Question 10	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 19	Use a different approach for Question 11	
+---------------------------------------------------
+
+---------------------------------------------------
+-- 20	Drop all the tables.	
+---------------------------------------------------
+

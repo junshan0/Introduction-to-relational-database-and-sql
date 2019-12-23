@@ -1,0 +1,12 @@
+
+------------------------------------------------
+-- 4.1 Simple INSERT and SELECT
+------------------------------------------------
+
+INSERT INTO Instructor (Instructor_Affiliation, Instructor_NAME) VALUES ('Jedi', 'Qui gon');
+INSERT INTO Instructor VALUES ('Anakin Skywalker', 'Jedi');
+
+SELECT Instructor_Affiliation, Instructor_Name FROM Instructor;
+SELECT * FROM Instructor;
+SELECT Instructor_NAME, * FROM Instructor;
+

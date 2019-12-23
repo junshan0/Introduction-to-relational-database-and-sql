@@ -1,0 +1,24 @@
+
+------------------------------------------------
+-- 7.3 WHERE Clause: NULL
+------------------------------------------------
+
+SELECT * FROM Instructor WHERE NULL = NULL;
+SELECT * FROM Instructor WHERE NULL <> NULL;
+SELECT * FROM Instructor WHERE NULL IN (NULL);
+SELECT * FROM Instructor WHERE NOT NULL IN (1, 2, 3);
+
+INSERT INTO Instructor VALUES ('Owen Lars', NULL);
+
+SELECT * FROM Instructor WHERE Instructor_Affiliation = NULL;
+SELECT * FROM Instructor WHERE Instructor_Affiliation = 'NULL';
+SELECT * FROM Instructor WHERE Instructor_Affiliation = '';
+
+SELECT * FROM Instructor WHERE Instructor_Affiliation LIKE '%';
+SELECT * FROM Instructor WHERE NOT (Instructor_Affiliation LIKE '%');
+
+SELECT * FROM Instructor WHERE Instructor_Affiliation IS NULL;
+
+SELECT * FROM Instructor WHERE Instructor_Affiliation IS NOT NULL;
+SELECT * FROM Instructor WHERE NOT (Instructor_Affiliation IS NULL);
+

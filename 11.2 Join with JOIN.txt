@@ -1,0 +1,15 @@
+
+------------------------------------------------
+-- 11.2 Joining with JOIN
+------------------------------------------------
+
+SELECT c.Course_Name, i.Instructor_Name
+FROM Instructor i, Course c
+WHERE i.Instructor_Name = c.Instructor_Name
+AND c.Course_Name LIKE '%Force%';
+
+SELECT c.Course_Name, i.Instructor_Name
+FROM Instructor i
+JOIN Course c
+  ON i.Instructor_Name = c.Instructor_Name
+WHERE c.Course_Name LIKE '%Force%';
